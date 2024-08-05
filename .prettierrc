@@ -1,0 +1,25 @@
+{
+  "importOrder": [
+    "<THIRD_PARTY_MODULES>",
+    "interface",
+    "(?=content|api)",
+    "types",
+    "constants",
+    "styles/",
+    "lib/",
+    "context/",
+    "config/",
+    "utils/",
+    "hooks/",
+    "(components/|./index)",
+    ".svg",
+    "^../(.*)$",
+    "(?=./styles.module.scss)"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "plugins": [
+    "@trivago/prettier-plugin-sort-imports",
+    "prettier-plugin-tailwindcss"
+  ]
+}
