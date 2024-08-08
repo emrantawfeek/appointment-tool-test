@@ -1,6 +1,6 @@
-import { cn } from "@/lib/utils";
-
 import Header from "./Header";
+
+import { cn } from "@/lib/utils";
 
 interface Props {
   children: React.ReactNode;
@@ -14,6 +14,7 @@ const MainContent = ({ children, className }: Props) => {
         "scrollbar h-screen flex-grow overflow-y-auto bg-muted/40",
         className,
       )}
+      vaul-drawer-wrapper=""
     >
       <Header />
       <div className="m-6 mt-0">{children}</div>

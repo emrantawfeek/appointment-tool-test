@@ -1,4 +1,4 @@
-// import GlobalSearch from "@/components/shared/search/GlobalSearch";
+// import GlobalSearch from "@components/shared/search/GlobalSearch";
 import BreadcrumbRoute from "@components/shared/BreadcrumbRoute";
 import LoggedInUser from "@components/shared/LoggdeInUser";
 

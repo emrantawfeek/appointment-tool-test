@@ -3,13 +3,13 @@
 import { useTheme } from "next-themes";
 import { LuMoon, LuSun } from "react-icons/lu";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@components/ui/button";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
+} from "@components/ui/tooltip";
 
 export function ThemeToggle() {
   const { setTheme, theme } = useTheme();
