@@ -15,7 +15,7 @@ export default function Page({ params }: PageProps) {
 
   return (
     <div className="flex space-y-6">
-      <div className="flex w-full flex-row gap-6">
+      <div className="flex w-full flex-grow flex-row gap-6">
         <ResponsiveDialog
           title="Test"
           description="that is a test only."

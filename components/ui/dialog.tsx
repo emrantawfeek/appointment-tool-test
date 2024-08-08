@@ -38,7 +38,15 @@ const DialogContent = React.forwardRef<
     <DialogPrimitive.Content
       ref={ref}
       className={cn(
-        "scrollbar fixed right-[1.25%] top-[2.5%] z-50 flex h-[95%] w-[520px] flex-col gap-4 overflow-hidden overflow-y-auto text-wrap border bg-background p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg",
+        "scrollbar fixed right-[1.25%] top-[2.5%] z-50 flex h-[95%] w-[520px] flex-col gap-4 overflow-hidden overflow-y-auto text-wrap border bg-background p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 sm:rounded-lg",
+        // pops from right
+        "data-[state=closed]:slide-out-to-right-1/2 data-[state=open]:slide-in-from-right-1/2",
+        // pops from left
+        // "data-[state=closed]:slide-out-to-left-1/2 data-[state=open]:slide-in-from-left-1/2",
+        // pops from top
+        // "data-[state=closed]:slide-out-to-top-1/2 data-[state=open]:slide-in-from-top-1/2",
+        // pops from bottom
+        // "data-[state=closed]:slide-out-to-bottom-1/2 data-[state=open]:slide-in-from-bottom-1/2",
         className,
       )}
       {...props}
