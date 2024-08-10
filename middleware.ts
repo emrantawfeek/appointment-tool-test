@@ -11,24 +11,24 @@ export default async function middleware(req: NextRequest) {
 
   subdomain = subdomain.replace("localhost:3000", "");
 
-  // handle no subdomain or www with base path
-  if (subdomain === "www" || subdomain === "") {
-    return NextResponse.next();
-  }
+  // // handle no subdomain or www with base path
+  // if (subdomain === "www" || subdomain === "") {
+  //   return NextResponse.next();
+  // }
 
-  // handle no subdomain or www with base path
-  if (subdomain === "admin") {
-    return NextResponse.rewrite(
-      new URL(`/${subdomain}${path === "/" ? "" : path}`, req.url),
-    );
-  }
+  // // handle no subdomain or www with base path
+  // if (subdomain === "admin") {
+  //   return NextResponse.rewrite(
+  //     new URL(`/${subdomain}${path === "/" ? "" : path}`, req.url),
+  //   );
+  // }
 
-  // subdomains
-  if (subdomain !== "app") {
-    return NextResponse.rewrite(
-      new URL(`/${subdomain}${path === "/" ? "" : path}`, req.url),
-    );
-  }
+  // // subdomains
+  // if (subdomain !== "app") {
+  //   return NextResponse.rewrite(
+  //     new URL(`/${subdomain}${path === "/" ? "" : path}`, req.url),
+  //   );
+  // }
 
   return NextResponse.next();
 }
