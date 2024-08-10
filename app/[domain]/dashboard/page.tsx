@@ -1,8 +1,13 @@
-import { LuUserPlus2, LuUsers2 } from "react-icons/lu";
+import {
+  LuCalendarDays,
+  LuCalendarPlus,
+  LuUserPlus2,
+  LuUsers2,
+} from "react-icons/lu";
 
+import NewCustomer from "@components/shared/dashboard/Customer/NewCustomer";
 import QuickAccessCard from "@components/shared/dashboard/QuickAccessCard";
-import { ResponsiveDialog } from "@components/shared/dashboard/ResponsiveDialog";
-import { Button } from "@components/ui/button";
+import WelcomeCard from "@components/shared/dashboard/WelcomeCard";
 
 interface PageProps {
   params: {
@@ -14,78 +19,20 @@ export default function Page({ params }: PageProps) {
   const { domain } = params;
 
   return (
-    <div className="flex space-y-6">
+    <div className="flex flex-col space-y-6">
       <div className="flex w-full flex-grow flex-row gap-6">
-        <ResponsiveDialog
-          title="Test"
-          description="that is a test only."
-          trigger={<Button variant="outline">Open Dialog</Button>}
-        >
-          <div className="flex w-full flex-col gap-4">
-            <QuickAccessCard
-              title="Clients"
-              description="Quick access to your client management tools."
-              viewLink={{ link: "/clients", icon: LuUsers2 }}
-              handleAction={{
-                text: "Add New Client",
-                icon: LuUserPlus2,
-              }}
-            />
-            <QuickAccessCard
-              title="Clients"
-              description="Quick access to your client management tools."
-              viewLink={{ link: "/clients", icon: LuUsers2 }}
-              handleAction={{
-                text: "Add New Client",
-                icon: LuUserPlus2,
-              }}
-            />
-            <QuickAccessCard
-              title="Clients"
-              description="Quick access to your client management tools."
-              viewLink={{ link: "/clients", icon: LuUsers2 }}
-              handleAction={{
-                text: "Add New Client",
-                icon: LuUserPlus2,
-              }}
-            />
-            <QuickAccessCard
-              title="Clients"
-              description="Quick access to your client management tools."
-              viewLink={{ link: "/clients", icon: LuUsers2 }}
-              handleAction={{
-                text: "Add New Client",
-                icon: LuUserPlus2,
-              }}
-            />
-          </div>
-        </ResponsiveDialog>
+        <WelcomeCard name={"Emran"} />
         <QuickAccessCard
-          title="Clients"
+          title="Customer"
           description="Quick access to your client management tools."
           viewLink={{ link: "/clients", icon: LuUsers2 }}
-          handleAction={{
-            text: "Add New Client",
-            icon: LuUserPlus2,
-          }}
+          actionButton={<NewCustomer variant="secondary" />}
         />
         <QuickAccessCard
-          title="Clients"
+          title="Appointment"
           description="Quick access to your client management tools."
-          viewLink={{ link: "/clients", icon: LuUsers2 }}
-          handleAction={{
-            text: "Add New Client",
-            icon: LuUserPlus2,
-          }}
-        />
-        <QuickAccessCard
-          title="Clients"
-          description="Quick access to your client management tools."
-          viewLink={{ link: "/clients", icon: LuUsers2 }}
-          handleAction={{
-            text: "Add New Client",
-            icon: LuUserPlus2,
-          }}
+          viewLink={{ link: "/appointments", icon: LuCalendarDays }}
+          actionButton={<NewCustomer variant="secondary" />}
         />
       </div>
     </div>

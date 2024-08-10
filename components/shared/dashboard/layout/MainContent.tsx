@@ -1,6 +1,6 @@
-import Header from "./Header";
+import { cn } from "@lib/utils";
 
-import { cn } from "@/lib/utils";
+import { Header } from "@components/shared/dashboard/layout";
 
 interface Props {
   children: React.ReactNode;

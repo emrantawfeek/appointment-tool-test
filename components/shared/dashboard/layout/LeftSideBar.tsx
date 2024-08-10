@@ -1,8 +1,9 @@
 "use client";
 
-import Logo from "@public/assets/logo/Logo";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
+import Logo from "@public/assets/logo/Logo";
 import { memo } from "react";
 import { IconType } from "react-icons";
 import { LuCog } from "react-icons/lu";
@@ -11,7 +12,7 @@ import { dashboardNav } from "@constants";
 
 import { cn } from "@lib/utils";
 
-import { ThemeToggle } from "@components/shared/dashboard/ThemeToggle";
+import { ThemeToggle } from "@components/shared/dashboard/layout";
 import {
   Tooltip,
   TooltipContent,

@@ -1,6 +1,7 @@
 "use client";
 
 import { useTheme } from "next-themes";
+
 import { LuMoon, LuSun } from "react-icons/lu";
 
 import { Button } from "@components/ui/button";
@@ -11,7 +12,7 @@ import {
   TooltipTrigger,
 } from "@components/ui/tooltip";
 
-export function ThemeToggle() {
+export default function ThemeToggle() {
   const { setTheme, theme } = useTheme();
 
   const handleThemeChange = () => {

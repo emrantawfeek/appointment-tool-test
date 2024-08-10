@@ -1,5 +1,6 @@
 {
   "importOrder": [
+    "next",
     "<THIRD_PARTY_MODULES>",
     "interface",
     "(?=content|api)",
@@ -7,6 +8,7 @@
     "constants",
     "styles/",
     "lib/",
+    "database/",
     "context/",
     "config/",
     "utils/",

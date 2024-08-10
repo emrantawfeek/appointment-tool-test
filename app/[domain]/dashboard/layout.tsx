@@ -1,5 +1,4 @@
-import LeftSideBar from "@components/shared/dashboard/LeftSideBar";
-import MainContent from "@components/shared/dashboard/MainContent";
+import { LeftSideBar, MainContent } from "@components/shared/dashboard/layout";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
