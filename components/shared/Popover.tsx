@@ -23,7 +23,7 @@ export default function Popover({
   const uniqueId = useId();
   const formContainerRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
-  const [note, setNote] = useState<string | null>(null);
+  const [note, setNote] = useState<string | null>(importedNote);
 
   const openMenu = () => {
     // setNote(importedNote);
