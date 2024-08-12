@@ -11,3 +11,14 @@ export const CustomerSchema = z.object({
 });
 
 export type Customer = z.infer<typeof CustomerSchema>;
+
+export const AppointmentSchema = z.object({
+  id: z.string(),
+  client: z.string(),
+  date: z.string().date(),
+  time: z.string().time(),
+  status: z.enum(["Pending", "Confirmed", "Canceled", "Completed"]),
+  note: z.string().optional(),
+});
+
+export type Appointment = z.infer<typeof AppointmentSchema>;

@@ -31,7 +31,7 @@ interface ResponsiveDialogProps {
   trigger: React.ReactNode;
 }
 
-export function ResponsiveDialog({
+export default function ResponsiveDialog({
   children,
   title,
   description,

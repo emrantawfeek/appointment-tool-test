@@ -1,21 +1,29 @@
-import {
-  LuCalendarDays,
-  LuCalendarPlus,
-  LuUserPlus2,
-  LuUsers2,
-} from "react-icons/lu";
+import { Metadata } from "next";
 
-import NewCustomer from "@components/shared/dashboard/Customer/NewCustomer";
-import QuickAccessCard from "@components/shared/dashboard/QuickAccessCard";
-import WelcomeCard from "@components/shared/dashboard/WelcomeCard";
+import { LuCalendarDays, LuUsers2 } from "react-icons/lu";
 
-interface PageProps {
+import capitalizeFirstLetter from "@lib/utils";
+
+import { QuickAccessCard, WelcomeCard } from "@components/shared/dashboard";
+import { UpcomingAppointments } from "@components/shared/dashboard/Appointment";
+import { NewClient } from "@components/shared/dashboard/Client";
+
+interface Props {
   params: {
     domain: string;
   };
 }
 
-export default function Page({ params }: PageProps) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  // read route params
+  const { domain } = params;
+
+  return {
+    title: capitalizeFirstLetter(domain) + " • Dashboard",
+  };
+}
+
+export default function Page({ params }: Props) {
   const { domain } = params;
 
   return (
@@ -26,15 +34,16 @@ export default function Page({ params }: PageProps) {
           title="Customer"
           description="Quick access to your client management tools."
           viewLink={{ link: "/clients", icon: LuUsers2 }}
-          actionButton={<NewCustomer variant="secondary" />}
+          actionButton={<NewClient variant="secondary" />}
         />
         <QuickAccessCard
           title="Appointment"
           description="Quick access to your client management tools."
           viewLink={{ link: "/appointments", icon: LuCalendarDays }}
-          actionButton={<NewCustomer variant="secondary" />}
+          actionButton={<NewClient variant="secondary" />}
         />
       </div>
+      <UpcomingAppointments />
     </div>
   );
 }

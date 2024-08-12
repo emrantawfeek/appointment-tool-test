@@ -83,7 +83,7 @@ function NavGroup({ items }: NavGroupProps) {
 
 export default function LeftSideBar() {
   return (
-    <aside className="inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background sm:flex">
+    <aside className="sticky inset-y-0 left-0 z-10 hidden h-screen w-14 flex-col border-r bg-background sm:flex">
       <nav className="flex flex-col items-center gap-5 px-2 sm:py-5">
         <Link
           href="/"

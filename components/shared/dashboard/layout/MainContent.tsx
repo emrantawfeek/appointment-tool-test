@@ -11,7 +11,7 @@ const MainContent = ({ children, className }: Props) => {
   return (
     <main
       className={cn(
-        "scrollbar h-screen flex-grow overflow-y-auto bg-muted/40",
+        "scrollbar flex-grow overflow-y-auto bg-muted/40",
         className,
       )}
       vaul-drawer-wrapper=""

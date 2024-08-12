@@ -17,15 +17,15 @@ import {
 } from "@components/ui/form";
 import { Input } from "@components/ui/input";
 
-interface CustomerFormProps {
+interface ClientFormProps {
   formType?: "new" | "edit";
   customerDetails?: string;
 }
 
-export default function CustomerForm({
+export default function ClientForm({
   formType = "new",
   customerDetails,
-}: CustomerFormProps) {
+}: ClientFormProps) {
   const form = useForm<z.infer<typeof CustomerSchema>>({
     resolver: zodResolver(CustomerSchema),
     defaultValues: {

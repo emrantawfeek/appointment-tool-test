@@ -1,17 +1,17 @@
-import CustomerForm from "./CustomerForm";
 import { LuUserPlus2 } from "react-icons/lu";
 
-import { ResponsiveDialog } from "@components/shared/dashboard/ResponsiveDialog";
+import { ResponsiveDialog } from "@components/shared/dashboard";
+import { ClientForm } from "@components/shared/dashboard/Client";
 import { Button, ButtonProps } from "@components/ui/button";
 
-interface NewCustomerProps extends ButtonProps {
+interface NewClientProps extends ButtonProps {
   hideIcon?: boolean;
 }
 
-export default function NewCustomer({
+export default function NewClient({
   hideIcon,
   ...buttonProps
-}: NewCustomerProps) {
+}: NewClientProps) {
   return (
     <ResponsiveDialog
       title="New Customer"
@@ -23,7 +23,7 @@ export default function NewCustomer({
         </Button>
       }
     >
-      <CustomerForm />
+      <ClientForm />
     </ResponsiveDialog>
   );
 }
