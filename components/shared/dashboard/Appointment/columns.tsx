@@ -2,14 +2,14 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 
-import { Appointment } from "@lib/validations";
+import { AppointmentObject } from "@lib/validations";
 
 import Popover from "@components/shared/Popover";
 import { Badge } from "@components/ui/badge";
 import { Checkbox } from "@components/ui/checkbox";
 import { DataTableColumnHeader } from "@components/ui/table/DataTableColumnHeader";
 
-export const columns: ColumnDef<Appointment>[] = [
+export const columns: ColumnDef<AppointmentObject>[] = [
   {
     accessorKey: "id",
     header: ({ table }) => (
@@ -35,7 +35,7 @@ export const columns: ColumnDef<Appointment>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "client",
+    accessorKey: "clientId",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Client" />
     ),

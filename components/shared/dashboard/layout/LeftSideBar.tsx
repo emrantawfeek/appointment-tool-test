@@ -8,7 +8,7 @@ import { memo } from "react";
 import { IconType } from "react-icons";
 import { LuCog } from "react-icons/lu";
 
-import { dashboardNav } from "@constants";
+import { navItems } from "@constants";
 
 import { cn } from "@lib/utils";
 
@@ -92,7 +92,7 @@ export default function LeftSideBar() {
           <Logo className="h-7 w-7 transition-all group-hover:scale-110 md:h-6 md:w-6" />
           <span className="sr-only">Emran Inc</span>
         </Link>
-        <NavGroup items={dashboardNav} />
+        <NavGroup items={navItems} />
       </nav>
       <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-5">
         <ThemeToggle />

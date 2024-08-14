@@ -1,7 +1,7 @@
 import { BsHouses } from "react-icons/bs";
 import { LuGrip, LuHome, LuPenSquare, LuUsers2 } from "react-icons/lu";
 
-export const dashboardNav = [
+export const navItems = [
   {
     href: "/",
     name: "Home",

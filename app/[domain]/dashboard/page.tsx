@@ -43,7 +43,7 @@ export default function Page({ params }: Props) {
           actionButton={<NewClient variant="secondary" />}
         />
       </div>
-      <UpcomingAppointments />
+      <UpcomingAppointments orgId="3" />
     </div>
   );
 }

@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { CustomerSchema } from "@lib/validations";
+import { ClientSchema } from "@lib/validations";
 
 import { Button } from "@components/ui/button";
 import {
@@ -26,8 +26,8 @@ export default function ClientForm({
   formType = "new",
   customerDetails,
 }: ClientFormProps) {
-  const form = useForm<z.infer<typeof CustomerSchema>>({
-    resolver: zodResolver(CustomerSchema),
+  const form = useForm<z.infer<typeof ClientSchema>>({
+    resolver: zodResolver(ClientSchema),
     defaultValues: {
       firstName: "",
       lastName: "",
@@ -36,7 +36,7 @@ export default function ClientForm({
     },
   });
 
-  async function onSubmit(values: z.infer<typeof CustomerSchema>) {
+  async function onSubmit(values: z.infer<typeof ClientSchema>) {
     try {
       if (formType === "new") {
         // Create new customer

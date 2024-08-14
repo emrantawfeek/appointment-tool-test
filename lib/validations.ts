@@ -1,7 +1,8 @@
 import validator from "validator";
 import { z } from "zod";
 
-export const CustomerSchema = z.object({
+export const ClientSchema = z.object({
+  clientId: z.string(),
   firstName: z
     .string()
     .min(3, "First name must be between 3 and 100 characters"),
@@ -10,15 +11,22 @@ export const CustomerSchema = z.object({
   phone: z.string().refine(validator.isMobilePhone, "Invalid phone number"),
 });
 
-export type Customer = z.infer<typeof CustomerSchema>;
+export type ClientObject = z.infer<typeof ClientSchema>;
 
 export const AppointmentSchema = z.object({
-  id: z.string(),
-  client: z.string(),
+  appointmentId: z.string(),
+  clientId: z.string(),
   date: z.string().date(),
   time: z.string().time(),
   status: z.enum(["Pending", "Confirmed", "Canceled", "Completed"]),
   note: z.string().optional(),
+  orgId: z.string(),
 });
 
-export type Appointment = z.infer<typeof AppointmentSchema>;
+export type AppointmentObject = z.infer<typeof AppointmentSchema>;
+
+export const UserSchema = z.object({
+  orgId: z.string(),
+  clerkId: z.string(),
+  role: z.enum(["Owner", "Admin"]),
+});

@@ -1,1 +1,1 @@
-export { dashboardNav } from "./dashboardNav";
+export { navItems } from "./navItems";
