@@ -28,9 +28,11 @@ export function DataTableToolbar<TData>({
           <CiSearch className="absolute inset-y-0 left-3 my-auto h-5 w-5 text-gray-400" />
           <Input
             placeholder="Search..."
-            value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
+            value={
+              (table.getColumn("clientId")?.getFilterValue() as string) ?? ""
+            }
             onChange={(event: { target: { value: string } }) =>
-              table.getColumn("name")?.setFilterValue(event.target.value)
+              table.getColumn("clientId")?.setFilterValue(event.target.value)
             }
             className="w-[150px] bg-background pl-10 align-middle lg:w-[250px]"
           />

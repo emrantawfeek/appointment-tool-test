@@ -8,7 +8,7 @@ const Header = () => {
       <BreadcrumbRoute initialRoute="" />
       <div className="flex flex-row gap-6">
         {/* <GlobalSearch className="w-full md:w-[200px] lg:w-[336px]" /> */}
-        <LoggedInUser hideName />
+        <LoggedInUser />
       </div>
     </header>
   );

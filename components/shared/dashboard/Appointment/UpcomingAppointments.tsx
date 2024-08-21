@@ -1,6 +1,6 @@
 import { columns } from "./columns";
 
-import { UpcomingAppointmentsData } from "@constants/data";
+import { AppointmentsData } from "@constants/data";
 
 import { AppointmentObject } from "@lib/validations";
 
@@ -15,7 +15,7 @@ import DataTable from "@components/ui/table/DataTable";
 
 async function getData(orgId: string): Promise<AppointmentObject[]> {
   // Fetch data from your API here.
-  return UpcomingAppointmentsData.filter(
+  return AppointmentsData.filter(
     (appointment) => appointment.orgId === orgId,
   );
 }

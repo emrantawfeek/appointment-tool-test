@@ -2,19 +2,17 @@ import { Metadata } from "next";
 
 import { LuCalendarDays, LuUsers2 } from "react-icons/lu";
 
+import { ParamsProps } from "@types";
+
 import capitalizeFirstLetter from "@lib/utils";
 
 import { QuickAccessCard, WelcomeCard } from "@components/shared/dashboard";
 import { UpcomingAppointments } from "@components/shared/dashboard/Appointment";
 import { NewClient } from "@components/shared/dashboard/Client";
 
-interface Props {
-  params: {
-    domain: string;
-  };
-}
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: ParamsProps): Promise<Metadata> {
   // read route params
   const { domain } = params;
 
@@ -23,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function Page({ params }: Props) {
+export default function Page({ params }: ParamsProps) {
   const { domain } = params;
 
   return (
@@ -43,7 +41,7 @@ export default function Page({ params }: Props) {
           actionButton={<NewClient variant="secondary" />}
         />
       </div>
-      <UpcomingAppointments orgId="3" />
+      <UpcomingAppointments orgId="org1" />
     </div>
   );
 }

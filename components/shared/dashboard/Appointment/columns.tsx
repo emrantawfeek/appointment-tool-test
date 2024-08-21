@@ -1,6 +1,7 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
+import moment from "moment";
 
 import { AppointmentObject } from "@lib/validations";
 
@@ -47,12 +48,22 @@ export const columns: ColumnDef<AppointmentObject>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Date" />
     ),
+    cell: ({ row }) => {
+      const date = row.getValue("date") as string;
+      const formatedDate = moment(date, "YYYY-MM-DD").format("ll");
+      return <>{formatedDate}</>;
+    },
   },
   {
     accessorKey: "time",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Time" />
     ),
+    cell: ({ row }) => {
+      const time = row.getValue("time") as string;
+      const formatedTime = moment(time, "hh:mm:ss").format("LT");
+      return <>{formatedTime}</>;
+    },
   },
   {
     accessorKey: "note",
@@ -75,13 +86,13 @@ export const columns: ColumnDef<AppointmentObject>[] = [
     cell: ({ row }) => {
       function getStatusVariant(status: string) {
         switch (status) {
-          case "Pending":
+          case "pending":
             return "outline";
-          case "Confirmed":
+          case "confirmed":
             return "secondary";
-          case "Canceled":
+          case "canceled":
             return "destructive";
-          case "Completed":
+          case "completed":
             return "default";
           default:
             return "default"; // fallback if the status doesn't match any case

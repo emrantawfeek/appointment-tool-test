@@ -1,47 +1,57 @@
-import { NextRequest, NextResponse } from "next/server";
+import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+import { NextResponse } from "next/server";
 
-export default async function middleware(req: NextRequest) {
-  const url = req.nextUrl;
+import { orgExistsBySubdomain } from "@database/actions/org.action";
 
-  const hostname = req.headers.get("host")!;
+const isDashboardRoute = createRouteMatcher(["/dashboard(.*)"]);
 
-  const path = url.pathname;
+export default clerkMiddleware(async (auth, req) => {
+  const { nextUrl, headers } = req;
+
+  const hostname = headers.get("host")!;
+  const path = nextUrl.pathname;
 
   let subdomain = hostname.split(".")[0];
 
-  subdomain = subdomain.replace("localhost:3000", "");
+  // If on vercel.app or other multi-segment domains, handle appropriately
+  if (hostname.endsWith(".vercel.app")) {
+    subdomain = hostname.split(".")[0]; // First segment before .vercel.app
+  } else if (hostname === "localhost:3000") {
+    subdomain = ""; // No subdomain in local development
+  } else {
+    // Custom domain or other cases (e.g., custom domains)
+    subdomain = hostname.split(".")[0];
+  }
+  // Handle base domain or "www" subdomain cases
+  if (!subdomain || subdomain === "www") {
+    return NextResponse.next();
+  }
 
-  // // handle no subdomain or www with base path
-  // if (subdomain === "www" || subdomain === "") {
-  //   return NextResponse.next();
-  // }
+  // Validate the existence of the organization by subdomain
+  const isValidSubdomain = await orgExistsBySubdomain(subdomain);
+  if (!isValidSubdomain) {
+    return NextResponse.rewrite(
+      new URL(`/${subdomain}/org-not-found`, req.url),
+    );
+  }
 
-  // // handle no subdomain or www with base path
-  // if (subdomain === "admin") {
-  //   return NextResponse.rewrite(
-  //     new URL(`/${subdomain}${path === "/" ? "" : path}`, req.url),
-  //   );
-  // }
+  // Allow sign-in and sign-up routes without subdomain checks
+  if (path === "/sign-in" || path === "/sign-up") {
+    return NextResponse.next();
+  }
 
-  // // subdomains
-  // if (subdomain !== "app") {
-  //   return NextResponse.rewrite(
-  //     new URL(`/${subdomain}${path === "/" ? "" : path}`, req.url),
-  //   );
-  // }
+  if (isDashboardRoute(req)) auth().protect();
 
-  return NextResponse.next();
-}
+  // Rewrite URL to include subdomain in the path
+  return NextResponse.rewrite(
+    new URL(`/${subdomain}${path === "/" ? "" : path}`, req.url),
+  );
+});
 
 export const config = {
   matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     * Feel free to modify this pattern to include more paths.
-     */
-    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
+    // Exclude Next.js internal routes, API routes, and trpc routes
+    "/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)",
+    "/(api|trpc)(.*)",
   ],
 };

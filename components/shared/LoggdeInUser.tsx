@@ -1,36 +1,30 @@
-import Image from "next/image";
+"use client";
+
+import { ClerkLoaded, ClerkLoading, UserButton } from "@clerk/nextjs";
 
 import { cn } from "@lib/utils";
 
-const LoggedInUser = async ({
-  hideName = false,
-  className,
-}: {
-  hideName?: boolean;
-  className?: string;
-}) => {
-  const user = {
-    firstName: "John",
-    lastName: "Doe",
-  };
+import { Skeleton } from "@components/ui/skeleton";
 
+const LoggedInUser = ({ className }: { className?: string }) => {
   return (
-    <>
-      <div className={cn("flex h-10 w-10 items-center gap-x-4", className)}>
-        <Image
-          src={"/assets/images/3D-charachter.jpeg"}
-          width={40}
-          height={40}
-          alt="user-picture"
-          className="rounded-full"
+    <div className={cn("flex h-10 w-10 items-center gap-x-4", className)}>
+      <ClerkLoading>
+        <Skeleton className="h-10 w-10 rounded-full" />
+      </ClerkLoading>
+      <ClerkLoaded>
+        <UserButton
+          appearance={{
+            elements: {
+              avatarBox: "h-10 w-10",
+            },
+            variables: {
+              colorPrimary: "#2986cc",
+            },
+          }}
         />
-      </div>
-      {!hideName && (
-        <span className="block text-sm font-medium text-gray-700">
-          {user?.firstName} {user?.lastName}
-        </span>
-      )}
-    </>
+      </ClerkLoaded>
+    </div>
   );
 };
 
