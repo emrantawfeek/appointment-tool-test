@@ -87,7 +87,6 @@ export default function Popover({
                 className="flex h-full flex-col bg-background"
                 onSubmit={(e) => {
                   e.preventDefault();
-                  console.log("Add Note");
                 }}
               >
                 <motion.span
@@ -124,7 +123,6 @@ export default function Popover({
                     aria-label="Submit note"
                     size="sm"
                     onClick={() => {
-                      console.log("Send feedback");
                       closeMenu();
                     }}
                   >
