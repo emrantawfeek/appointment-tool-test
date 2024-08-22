@@ -1,25 +1,12 @@
-import { Metadata } from "next";
 
 import { LuCalendarDays, LuUsers2 } from "react-icons/lu";
 
 import { ParamsProps } from "@types";
 
-import capitalizeFirstLetter from "@lib/utils";
 
 import { QuickAccessCard, WelcomeCard } from "@components/shared/dashboard";
 import { UpcomingAppointments } from "@components/shared/dashboard/Appointment";
 import { NewClient } from "@components/shared/dashboard/Client";
-
-export async function generateMetadata({
-  params,
-}: ParamsProps): Promise<Metadata> {
-  // read route params
-  const { domain } = params;
-
-  return {
-    title: capitalizeFirstLetter(domain) + " • Dashboard",
-  };
-}
 
 export default function Page({ params }: ParamsProps) {
   const { domain } = params;

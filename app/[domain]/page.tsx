@@ -1,6 +1,6 @@
 import { ParamsProps } from "@types";
 
-export default function HomePage({ params }: ParamsProps) {
+export default async function HomePage({ params }: ParamsProps) {
   const { domain } = params;
 
   return (

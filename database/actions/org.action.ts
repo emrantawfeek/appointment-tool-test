@@ -4,7 +4,9 @@ import { GetOrgByIdParams, GetOrgBySubdomainParams } from "@lib/shared.types";
 
 import { OrgData } from "@constants/data";
 
-export function orgExistsBySubdomain(subdomain: string): boolean {
+export async function orgExistsBySubdomain(
+  subdomain: string,
+): Promise<boolean> {
   try {
     const org = OrgData.find((org) => org.subdomain === subdomain);
     return !!org; // Return true if org is found, false otherwise
@@ -14,7 +16,7 @@ export function orgExistsBySubdomain(subdomain: string): boolean {
   }
 }
 
-export function getOrgById(params: GetOrgByIdParams) {
+export async function getOrgById(params: GetOrgByIdParams) {
   try {
     const { orgId } = params;
 
@@ -31,7 +33,7 @@ export function getOrgById(params: GetOrgByIdParams) {
   }
 }
 
-export function getOrgBySubdomain(params: GetOrgBySubdomainParams) {
+export async function getOrgBySubdomain(params: GetOrgBySubdomainParams) {
   try {
     const { subdomain } = params;
 
