@@ -12,18 +12,16 @@ const LoggedInUser = ({ className }: { className?: string }) => {
       <ClerkLoading>
         <Skeleton className="h-10 w-10 rounded-full" />
       </ClerkLoading>
-      <ClerkLoaded>
-        <UserButton
-          appearance={{
-            elements: {
-              avatarBox: "h-10 w-10",
-            },
-            variables: {
-              colorPrimary: "#2986cc",
-            },
-          }}
-        />
-      </ClerkLoaded>
+      <UserButton
+        appearance={{
+          elements: {
+            avatarBox: "h-10 w-10",
+          },
+          variables: {
+            colorPrimary: "#2986cc",
+          },
+        }}
+      />
     </div>
   );
 };
